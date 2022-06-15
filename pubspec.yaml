@@ -26,7 +26,7 @@ dependencies:
   faker: ^2.0.0
   flutter:
     sdk: flutter
-  google_fonts: ^2.1.0
+  google_fonts: ^3.0.1
   jiffy: ^4.1.0
   logger: ^1.1.0
   stream_chat_flutter_core: ^2.2.1
