@@ -9,8 +9,10 @@
 </p>
 
 <p align="center">  
-Chatter is a demo application showing how to create a chat app from scratch using <a href="https://flutter.dev/">Flutter</a> and the <a href="https://pub.dev/packages/stream_chat_flutter_core/">Stream Chat Flutter Core package</a>.
-</br>
+Chatter is a demo application showing how to create a chat app from scratch using 
+<a href="https://flutter.dev/">Flutter</a> 
+and the <a href="https://pub.dev/packages/stream_chat_flutter_core/">Stream Chat Flutter Core package</a>.
+</p>
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/13705472/160611526-5caf7e95-4377-4798-881b-7a6c6e932c6b.gif" />
