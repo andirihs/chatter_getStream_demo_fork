@@ -18,7 +18,7 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   final auth = firebase.FirebaseAuth.instance;
-  final functions = FirebaseFunctions.instance;
+  final functions = FirebaseFunctions.instanceFor(region: "europe-west3");
 
   final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
@@ -58,11 +58,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
             creds.user!.updatePhotoURL(_profilePictureController.text)
         ];
 
+        logger.d('firebase user: $user');
         await Future.wait(futures);
 
         // Create Stream user and get token using Firebase Functions
-        final callable = functions.httpsCallable('createStreamUserAndGetToken');
-        final results = await callable();
+        final callable = functions.httpsCallable('setStreamUserAndGetToken');
+        final result = await callable.call();
 
         // Connect user to Stream and set user data
         final client = StreamChatCore.of(context).client;
@@ -72,7 +73,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             name: _nameController.text,
             image: _profilePictureController.text,
           ),
-          results.data,
+          result.data,
         );
 
         // Navigate to home screen

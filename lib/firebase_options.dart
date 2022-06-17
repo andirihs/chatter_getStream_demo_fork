@@ -17,13 +17,19 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        return ios;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for ios - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.macOS:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for macos - '
@@ -36,31 +42,11 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBnhSooFU7Kne93-Bd07rZpQ8pJ2LSdmFE',
-    appId: '1:530920057497:web:f6b0b0a85f473caf8ca608',
-    messagingSenderId: '530920057497',
-    projectId: 'chatter-stream-demo',
-    authDomain: 'chatter-stream-demo.firebaseapp.com',
-    storageBucket: 'chatter-stream-demo.appspot.com',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyCWpKedtRPTPuvDLwLJtTqutmvjQ6W7XiQ',
     appId: '1:530920057497:android:fa15d5e79eef575c8ca608',
     messagingSenderId: '530920057497',
     projectId: 'chatter-stream-demo',
     storageBucket: 'chatter-stream-demo.appspot.com',
-  );
-
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAcXNEaoq1DuzGCpuRAYU17AECsbcoiB-Y',
-    appId: '1:530920057497:ios:ad3a55cd1b083b158ca608',
-    messagingSenderId: '530920057497',
-    projectId: 'chatter-stream-demo',
-    storageBucket: 'chatter-stream-demo.appspot.com',
-    androidClientId: '530920057497-se4jnrc3tt8s5p80a7h6074da4i9l5vt.apps.googleusercontent.com',
-    iosClientId: '530920057497-4orfrnok69irce8ap3dle91ecds0b5kc.apps.googleusercontent.com',
-    iosBundleId: 'com.example.chatterStreamDemo',
   );
 }
