@@ -151,7 +151,7 @@ class _MessageList extends StatelessWidget {
         itemBuilder: (context, index) {
           if (index < messages.length) {
             final message = messages[index];
-            if (message.user?.id == context.currentUser?.id) {
+            if (message.user?.id == context.currentFirebaseUser?.uid) {
               return _MessageOwnTile(message: message);
             } else {
               return _MessageTile(message: message);
@@ -354,7 +354,7 @@ class _AppBarTitle extends StatelessWidget {
     return Row(
       children: [
         Avatar.small(
-          url: Helpers.getChannelImage(channel, context.currentUser!),
+          url: Helpers.getChannelImage(channel, context.currentStreamUser!),
         ),
         const SizedBox(
           width: 16,
@@ -365,7 +365,7 @@ class _AppBarTitle extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                Helpers.getChannelName(channel, context.currentUser!),
+                Helpers.getChannelName(channel, context.currentStreamUser!),
                 overflow: TextOverflow.ellipsis,
                 style: const TextStyle(fontSize: 14),
               ),

@@ -12,7 +12,7 @@ class ContactsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return UserListCore(
       limit: 20,
-      filter: Filter.notEqual('id', context.currentUser!.id),
+      filter: Filter.notEqual('id', context.currentStreamUser!.id),
       emptyBuilder: (context) {
         return const Center(child: Text('There are no users'));
       },

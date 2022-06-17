@@ -107,7 +107,8 @@ class _MessageTile extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Avatar.medium(
-                  url: Helpers.getChannelImage(channel, context.currentUser!),
+                  url: Helpers.getChannelImage(
+                      channel, context.currentStreamUser!),
                 ),
               ),
               Expanded(
@@ -118,7 +119,8 @@ class _MessageTile extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 8.0),
                       child: Text(
-                        Helpers.getChannelName(channel, context.currentUser!),
+                        Helpers.getChannelName(
+                            channel, context.currentStreamUser!),
                         overflow: TextOverflow.ellipsis,
                         style: const TextStyle(
                           letterSpacing: 0.2,

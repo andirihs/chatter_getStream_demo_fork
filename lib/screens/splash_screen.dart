@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:chatter/app.dart';
 import 'package:chatter/screens/home_screen.dart';
 import 'package:chatter/screens/sign_in_screen.dart';
 import 'package:cloud_functions/cloud_functions.dart';
@@ -20,6 +21,7 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   late final StreamSubscription<firebase.User?> listener;
+  final functions = FirebaseFunctions.instanceFor(region: "europe-west3");
 
   @override
   void initState() {
@@ -32,28 +34,39 @@ class _SplashScreenState extends State<SplashScreen> {
     if (!mounted) {
       return;
     }
-    listener = auth.authStateChanges().listen((user) async {
-      if (user != null) {
-        // get Stream user token
-        final callable = FirebaseFunctions.instanceFor(region: "europe-west3")
-            .httpsCallable('ext-auth-chat-getStreamUserToken');
 
-        final result = await callable();
+    final currentFirebaseUser = auth.currentUser;
+    logger.i("splash screen currentFirebaseUser: $currentFirebaseUser");
+    if (currentFirebaseUser == null) {
+      await Future<void>.delayed(const Duration(milliseconds: 700));
+    }
 
-        // connect Stream user
+    listener = auth.authStateChanges().listen((firebaseUser) async {
+      logger.i("splash screen authState changed: $firebaseUser");
+
+      if (firebaseUser != null) {
+        // Create Stream user and get token using Firebase Functions
+        final callable = functions.httpsCallable('setStreamUserAndGetToken');
+        final result = await callable.call();
+
+        logger.d("setStreamUserAndGetToken function result: $result");
+
+        // Connect user to Stream and set user data
         final client = StreamChatCore.of(context).client;
-        await client.connectUser(
-          User(id: user.uid),
+        final ownUser = await client.connectUser(
+          User(
+            id: firebaseUser.uid,
+            name: firebaseUser.phoneNumber,
+          ),
           result.data,
         );
+
+        logger.d("stream user: $ownUser");
 
         // authenticated
         Navigator.of(context).pushReplacement(HomeScreen.route);
       } else {
-        // delay to show loading indicator
-        await Future.delayed(const Duration(milliseconds: 700));
-        // not authenticated
-        Navigator.of(context).pushReplacement(SignInScreen.route);
+        Navigator.of(context).pushReplacement(AppSignInScreen.route);
       }
     });
   }

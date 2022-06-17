@@ -15,7 +15,7 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final user = context.currentUser;
+    final user = context.currentFirebaseUser;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Profile'),
@@ -33,11 +33,11 @@ class ProfileScreen extends StatelessWidget {
           children: [
             Hero(
               tag: 'hero-profile-picture',
-              child: Avatar.large(url: user?.image),
+              child: Avatar.large(url: user?.photoURL),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text(user?.name ?? 'No name'),
+              child: Text(user?.displayName ?? 'No name'),
             ),
             const Divider(),
             const _SignOutButton(),

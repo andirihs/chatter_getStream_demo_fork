@@ -105,7 +105,7 @@ class MaterialBottomNavBat extends StatefulWidget {
 }
 
 class _MaterialBottomNavBatState extends State<MaterialBottomNavBat> {
-  var selectedIndex = 0;
+  int selectedIndex = 0;
 
   void handleItemSelected(int index) {
     /// not not navigate if profile is selected
