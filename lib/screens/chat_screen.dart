@@ -21,9 +21,7 @@ class ChatScreen extends StatefulWidget {
         ),
       );
 
-  const ChatScreen({
-    Key? key,
-  }) : super(key: key);
+  const ChatScreen({Key? key}) : super(key: key);
 
   @override
   _ChatScreenState createState() => _ChatScreenState();
@@ -116,10 +114,7 @@ class _ChatScreenState extends State<ChatScreen> {
 }
 
 class _MessageList extends StatelessWidget {
-  const _MessageList({
-    Key? key,
-    required this.messages,
-  }) : super(key: key);
+  const _MessageList({Key? key, required this.messages}) : super(key: key);
 
   final List<Message> messages;
 

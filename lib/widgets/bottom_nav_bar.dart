@@ -4,11 +4,10 @@ import 'package:chatter/widgets/glowing_action_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+// ToDo: no longer needed. Stay as reference for now.
 class AppBottomNavigationBar extends StatefulWidget {
-  const AppBottomNavigationBar({
-    Key? key,
-    required this.onItemSelected,
-  }) : super(key: key);
+  const AppBottomNavigationBar({Key? key, required this.onItemSelected})
+      : super(key: key);
 
   final ValueChanged<int> onItemSelected;
 
@@ -20,9 +19,7 @@ class _AppBottomNavigationBarState extends State<AppBottomNavigationBar> {
   var selectedIndex = 0;
 
   void handleItemSelected(int index) {
-    setState(() {
-      selectedIndex = index;
-    });
+    setState(() => selectedIndex = index);
     widget.onItemSelected(index);
   }
 
