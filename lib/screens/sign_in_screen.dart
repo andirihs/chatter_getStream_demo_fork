@@ -1,4 +1,5 @@
-import 'package:chatter/screens/screens.dart';
+import 'package:chatter/screens/home_screen.dart';
+import 'package:chatter/screens/sign_up_screen.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase;
 import 'package:flutter/material.dart';
@@ -10,6 +11,7 @@ class SignInScreen extends StatefulWidget {
   static Route get route => MaterialPageRoute(
         builder: (context) => const SignInScreen(),
       );
+
   const SignInScreen({Key? key}) : super(key: key);
 
   @override

@@ -1,8 +1,8 @@
 import 'package:chatter/app.dart';
-import 'package:chatter/screens/screens.dart';
-import 'package:chatter/widgets/widgets.dart';
+import 'package:chatter/screens/splash_screen.dart';
+import 'package:chatter/widgets/avatar.dart';
+import 'package:chatter/widgets/icon_buttons.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase;
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stream_chat_flutter_core/stream_chat_flutter_core.dart';
 
@@ -10,6 +10,7 @@ class ProfileScreen extends StatelessWidget {
   static Route get route => MaterialPageRoute(
         builder: (context) => const ProfileScreen(),
       );
+
   const ProfileScreen({Key? key}) : super(key: key);
 
   @override

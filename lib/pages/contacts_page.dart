@@ -1,9 +1,9 @@
+import 'package:chatter/app.dart';
 import 'package:chatter/screens/chat_screen.dart';
+import 'package:chatter/widgets/avatar.dart';
 import 'package:chatter/widgets/display_error_message.dart';
-import 'package:chatter/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:stream_chat_flutter_core/stream_chat_flutter_core.dart';
-import 'package:chatter/app.dart';
 
 class ContactsPage extends StatelessWidget {
   const ContactsPage({Key? key}) : super(key: key);
@@ -65,9 +65,7 @@ class _ContactTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        createChannel(context);
-      },
+      onTap: () => createChannel(context),
       child: ListTile(
         leading: Avatar.small(url: user.image),
         title: Text(user.name),

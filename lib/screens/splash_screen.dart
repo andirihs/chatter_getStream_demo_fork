@@ -1,6 +1,7 @@
 import 'dart:async';
 
-import 'package:chatter/screens/screens.dart';
+import 'package:chatter/screens/home_screen.dart';
+import 'package:chatter/screens/sign_in_screen.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase;
 import 'package:flutter/material.dart';
@@ -10,6 +11,7 @@ class SplashScreen extends StatefulWidget {
   static Route get route => MaterialPageRoute(
         builder: (context) => const SplashScreen(),
       );
+
   const SplashScreen({Key? key}) : super(key: key);
 
   @override

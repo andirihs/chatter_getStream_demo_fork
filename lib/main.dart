@@ -1,6 +1,6 @@
 import 'package:chatter/app.dart';
 import 'package:chatter/firebase_options.dart';
-import 'package:chatter/screens/screens.dart';
+import 'package:chatter/screens/splash_screen.dart';
 import 'package:chatter/theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +9,6 @@ import 'package:stream_chat_flutter_core/stream_chat_flutter_core.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  // await Firebase.initializeApp();
 
   final client = StreamChatClient(streamKey);
 

@@ -1,16 +1,17 @@
 import 'dart:async';
 
+import 'package:chatter/app.dart';
 import 'package:chatter/helpers.dart';
-import 'package:chatter/widgets/display_error_message.dart';
-import 'package:collection/collection.dart' show IterableExtension;
 import 'package:chatter/theme.dart';
+import 'package:chatter/widgets/avatar.dart';
+import 'package:chatter/widgets/display_error_message.dart';
 import 'package:chatter/widgets/glowing_action_button.dart';
-import 'package:chatter/widgets/widgets.dart';
+import 'package:chatter/widgets/icon_buttons.dart';
+import 'package:collection/collection.dart' show IterableExtension;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:stream_chat_flutter_core/stream_chat_flutter_core.dart';
-import 'package:chatter/app.dart';
 
 class ChatScreen extends StatefulWidget {
   static Route routeWithChannel(Channel channel) => MaterialPageRoute(
