@@ -4,6 +4,7 @@ import 'package:chatter/screens/splash_screen.dart';
 import 'package:chatter/theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:stream_chat_flutter_core/stream_chat_flutter_core.dart';
 
 void main() async {
@@ -13,9 +14,11 @@ void main() async {
   final client = StreamChatClient(streamKey);
 
   runApp(
-    MyApp(
-      client: client,
-      appTheme: AppTheme(),
+    ProviderScope(
+      child: MyApp(
+        client: client,
+        appTheme: AppTheme(),
+      ),
     ),
   );
 }

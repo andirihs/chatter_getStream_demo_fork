@@ -1,7 +1,8 @@
 import 'package:chatter/app.dart';
+import 'package:chatter/screens/profile_screen_edit.dart';
 import 'package:chatter/screens/splash_screen.dart';
-import 'package:chatter/widgets/avatar.dart';
-import 'package:chatter/widgets/icon_buttons.dart';
+import 'package:chatter/theme.dart';
+import 'package:chatter/widgets/edit_profile_picture_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase;
 import 'package:flutter/material.dart';
 import 'package:stream_chat_flutter_core/stream_chat_flutter_core.dart';
@@ -19,21 +20,21 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Profile'),
-        leading: Center(
-          child: IconBackground(
-            icon: Icons.arrow_back_ios_new,
-            onTap: () {
-              Navigator.of(context).pop();
-            },
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.edit),
+            onPressed: () =>
+                Navigator.of(context).push(ProfileScreenEdit.route),
           ),
-        ),
+        ],
       ),
       body: Center(
         child: Column(
           children: [
-            Hero(
+            const SizedBox(height: kDefaultPadding),
+            const Hero(
               tag: 'hero-profile-picture',
-              child: Avatar.large(url: user?.photoURL),
+              child: EditProfileWidget(),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -49,9 +50,7 @@ class ProfileScreen extends StatelessWidget {
 }
 
 class _SignOutButton extends StatefulWidget {
-  const _SignOutButton({
-    Key? key,
-  }) : super(key: key);
+  const _SignOutButton({Key? key}) : super(key: key);
 
   @override
   __SignOutButtonState createState() => __SignOutButtonState();

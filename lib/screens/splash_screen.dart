@@ -9,9 +9,13 @@ import 'package:flutter/material.dart';
 import 'package:stream_chat_flutter_core/stream_chat_flutter_core.dart';
 
 class SplashScreen extends StatefulWidget {
-  static Route get route => MaterialPageRoute(
-        builder: (context) => const SplashScreen(),
-      );
+  static Route get route {
+    logger.i("nav to SplashScreen");
+    return MaterialPageRoute(
+      builder: (context) => const SplashScreen(),
+      maintainState: false,
+    );
+  }
 
   const SplashScreen({Key? key}) : super(key: key);
 
@@ -30,6 +34,8 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Future<void> _handleAuthenticatedState() async {
+    logger.i("_handleAuthenticatedState");
+
     final auth = firebase.FirebaseAuth.instance;
     if (!mounted) {
       return;

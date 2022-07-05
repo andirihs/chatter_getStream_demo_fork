@@ -27,14 +27,20 @@ dependencies:
   firebase_auth: ^3.3.19
   firebase_core: ^1.17.1
   cloud_functions: ^3.2.16
+  firebase_storage: ^10.2.18
   flutterfire_ui: ^0.4.2
   cached_network_image: ^3.2.1
   cupertino_icons: ^1.0.5
   faker: ^2.0.0
   google_fonts: ^3.0.1
+  # dateTime
   jiffy: ^5.0.0
   logger: ^1.1.0
   stream_chat_flutter_core: ^3.2.0
+  hooks_riverpod: ^2.0.0-dev.9
+  flutter_hooks: ^0.18.5
+  image_picker: ^0.8.5+3
+  path_provider: ^2.0.11
 
 dev_dependencies:
   flutter_lints: ^1.0.4
