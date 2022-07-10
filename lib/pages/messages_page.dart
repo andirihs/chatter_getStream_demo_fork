@@ -38,12 +38,8 @@ class _MessagesPageState extends State<MessagesPage> {
           textAlign: TextAlign.center,
         ),
       ),
-      errorBuilder: (context, error) => DisplayErrorMessage(
-        error: error,
-      ),
-      loadingBuilder: (
-        context,
-      ) {
+      errorBuilder: (context, error) => DisplayErrorMessage(error: error),
+      loadingBuilder: (context) {
         return const Center(
           child: SizedBox(
             height: 100,
@@ -76,10 +72,7 @@ class _MessagesPageState extends State<MessagesPage> {
 }
 
 class _MessageTile extends StatelessWidget {
-  const _MessageTile({
-    Key? key,
-    required this.channel,
-  }) : super(key: key);
+  const _MessageTile({Key? key, required this.channel}) : super(key: key);
 
   final Channel channel;
 

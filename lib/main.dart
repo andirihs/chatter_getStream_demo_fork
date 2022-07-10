@@ -1,5 +1,5 @@
-import 'package:chatter/app.dart';
 import 'package:chatter/firebase_options.dart';
+import 'package:chatter/repo/get_stream_client.dart';
 import 'package:chatter/screens/splash_screen.dart';
 import 'package:chatter/theme.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -11,39 +11,30 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
-  final client = StreamChatClient(streamKey);
-
   runApp(
-    ProviderScope(
-      child: MyApp(
-        client: client,
-        appTheme: AppTheme(),
-      ),
+    const ProviderScope(
+      child: MyApp(),
     ),
   );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({
-    Key? key,
-    required this.client,
-    required this.appTheme,
-  }) : super(key: key);
-
-  final StreamChatClient client;
-  final AppTheme appTheme;
+class MyApp extends ConsumerWidget {
+  const MyApp({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final getStreamClient = ref.watch(getStreamClientProvider);
+    final appTheme = AppTheme();
+
     return MaterialApp(
       theme: appTheme.light,
       darkTheme: appTheme.dark,
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.dark,
-      title: 'Chatter',
+      title: 'Chatter getStream PoC',
       builder: (context, child) {
         return StreamChatCore(
-          client: client,
+          client: getStreamClient,
           child: ChannelsBloc(
             child: UsersBloc(
               child: child!,

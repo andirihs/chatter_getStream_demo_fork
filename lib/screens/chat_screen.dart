@@ -219,10 +219,7 @@ class _MessageTile extends StatelessWidget {
 }
 
 class _MessageOwnTile extends StatelessWidget {
-  const _MessageOwnTile({
-    Key? key,
-    required this.message,
-  }) : super(key: key);
+  const _MessageOwnTile({Key? key, required this.message}) : super(key: key);
 
   final Message message;
 
